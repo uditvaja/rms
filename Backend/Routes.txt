@@ -1,0 +1,31 @@
+// Define the login endpoint
+export const endpoints = {
+  auth: {
+    registerAdmin: '/admin/register',
+    login: '/admin/login',
+    forgotPassword: '/admin/forgot-password',
+   
+    verifyOtp: '/admin/verify-otp', 
+    resendOtp: '/adminedit/get-otp',
+    resetPassword: '/admin/reset-password',
+    getAdmin: '/admin/',
+  },
+  restaurant: {
+    getRestaurant: '/restaurant/',
+    create: '/restaurant/', 
+  },
+  profile: {
+    getAdmin: '/admin/',
+  },
+  user: {
+    signup: '/customer/signup', // Add this endpoint
+  },
+  order: {
+    getPlacedOrder: '/place-order/',
+    // acceptOrder:'/order/accept-order' // Add this endpoint
+  },
+};
+
+export default axiosInstance;
+
+

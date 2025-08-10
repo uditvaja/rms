@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "server.js"
+    }
+  ],
+  "env": {
+    "MONGO_URI": "mongodb+srv://ayushipaladiya1133:8Jj7BexJOQK6UIKN@cluster0.o8caq.mongodb.net/",
+    "JWT_SECRET": "mysecretvalue"
+  }
+}

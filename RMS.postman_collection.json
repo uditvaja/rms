@@ -1,0 +1,1581 @@
+{
+	"info": {
+		"_postman_id": "108d1328-5f42-4acc-a5d5-5015222e3f1b",
+		"name": "RESTURANT_MANAGEMENT_SYSTEM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39238858",
+		"_collection_link": "https://swiftrut-team.postman.co/workspace/Swiftrut-team-Workspace~5c5e7f04-8416-4569-98a5-2c75bf1b551e/collection/39238858-108d1328-5f42-4acc-a5d5-5015222e3f1b?action=share&source=collection_link&creator=39238858"
+	},
+	"item": [
+		{
+			"name": "ADMIN",
+			"item": [
+				{
+					"name": "Authenticate",
+					"item": [
+						{
+							"name": "register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstname\":\"Roshani\",\r\n    \"lastname\":\"Padaliya\",\r\n    \"email\":\"test02@gmail.com\",\r\n    \"phonenumber\":\"1478523690\",\r\n    \"country\":\"india\",\r\n    \"state\":\"gujarat\",\r\n    \"city\":\"surat\",\r\n    // \"selectrestaurant\":\"6769ef9e15e932a9d8489936\",\r\n    \"selectrestaurant\":\"Cafe Beats Restro\",\r\n    \"password\":\"test@2468\",\r\n    \"comfirmpassword\":\"test@2468\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/admin/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "// {\r\n//     \"email\":\"ronakpadaliya92@gmail.com\",\r\n//     \"password\":\"Ronak@2468\"\r\n// }\r\n{\r\n    \"email\":\"ronak@gmail.com\",\r\n    \"password\":\"test@2468\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/admin/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getadmin",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/admin/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAdminById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/admin/67671590a13024eeaaff9d2e",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"67671590a13024eeaaff9d2e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateadmin",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstname\":\"test22525gghgh\",\r\n    \"lastname\":\"test2\",\r\n    \"email\":\"ronak@gmail.com\",\r\n    \"phonenumber\":\"1478523690\",\r\n    \"country\":\"india\",\r\n    \"state\":\"gujarat\",\r\n    \"city\":\"surat\",\r\n    // \"selectrestaurant\":\"6769ef9e15e932a9d8489936\",\r\n    \"selectrestaurant\":\"Cafe Beats\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/admin/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "reset-password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NjllMjk2YjdkYzZmYThlNjYyMmMyOSIsImlhdCI6MTczNDk5NTExMywiZXhwIjoxNzM1MDgxNTEzfQ.kXBu5DG3TjWRTKp3PkWw--dcJyuBC0u0KvTmql1wfA4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\":\"6769e296b7dc6fa8e6622c29\",\r\n    \"oldPassword\":\"123456\",\r\n    \"newPassword\":\"test\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/admin/reset-password",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"reset-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "forgetPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NjllMjk2YjdkYzZmYThlNjYyMmMyOSIsImlhdCI6MTczNDk5MzU3OCwiZXhwIjoxNzM1MDc5OTc4fQ.1VWGSvx2tCb0LsEQc4QNIlwjhzCICzBOQplzbwuxLpY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"test1@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/admin/forgot-password",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"forgot-password"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verify-otp",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NjllMjk2YjdkYzZmYThlNjYyMmMyOSIsImlhdCI6MTczNDk5NTExMywiZXhwIjoxNzM1MDgxNTEzfQ.kXBu5DG3TjWRTKp3PkWw--dcJyuBC0u0KvTmql1wfA4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"test1@gmail.com\",\r\n    \"otp\":\"477642\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/admin/verify-otp",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"verify-otp"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "createCategory",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "categoryName",
+											"value": "Pizza",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "-AETgKkVS/image1.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/category/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"category",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllCategory",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/category/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"category",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Dashboard",
+					"item": [
+						{
+							"name": "Order and Customer and revenue Counts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/dashboard/counts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"dashboard",
+										"counts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Parcel and Onsite order",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/dashboard/order-counts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"dashboard",
+										"order-counts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "customerVisit",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/dashboard/counts/date",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"dashboard",
+										"counts",
+										"date"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get-popular-dishes",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n        \"totalOrders\": 3,\r\n        \"totalRevenue\": 150,\r\n        \"date\": {\r\n            \"date\": \"2024-12-24\",\r\n            \"dishId\": \"6769a5700c3d74cd72ca8912\",\r\n            \"dishName\": \"chili feckes fries \",\r\n            \"dishImage\": \"https://res.cloudinary.com/dixthpb7e/image/upload/v1734976878/menu_items/20d8a1ff4553b0ca0af3d84b173c870d_kohhcn.png\",\r\n            \"price\": 50\r\n        },\r\n        \"dishId\": \"6769a5700c3d74cd72ca8912\",\r\n        \"price\": 50,\r\n        \"dishName\": \"chili feckes fries \",\r\n        \"dishImage\": \"https://res.cloudinary.com/dixthpb7e/image/upload/v1734976878/menu_items/20d8a1ff4553b0ca0af3d84b173c870d_kohhcn.png\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/dashboard/popular-dishes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"dashboard",
+										"popular-dishes"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PlaceOrder",
+					"item": [
+						{
+							"name": "accept-cash-payment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"676eeb3a6b8eff8b8a79c6ac\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/place-order/accept-cash-payment",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"place-order",
+										"accept-cash-payment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "decline-cash-payment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"676eeb3a6b8eff8b8a79c6ac\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/place-order/decline-cash-payment",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"place-order",
+										"decline-cash-payment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "payment-history-onsite",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/place-order/payment-history/onsite",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"place-order",
+										"payment-history",
+										"onsite"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "payment-history-parcel",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/place-order/payment-history/parcel",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"place-order",
+										"payment-history",
+										"parcel"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "Create Product",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "itemName",
+											"value": "Pizza",
+											"type": "text"
+										},
+										{
+											"key": "ingredients",
+											"value": "Wheat flour, cheese, tomatoes, green peppers, jalapeños",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "500",
+											"type": "text"
+										},
+										{
+											"key": "discount",
+											"value": "0",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "Spicy",
+											"type": "text"
+										},
+										{
+											"key": "spiceLevel",
+											"value": "Regular Spicy",
+											"type": "text"
+										},
+										{
+											"key": "imageUrl",
+											"type": "file",
+											"src": "JA94jQFk3/Screenshot 2024-11-05 034726.png"
+										},
+										{
+											"key": "availability",
+											"value": "available",
+											"type": "text"
+										},
+										{
+											"key": "itemType",
+											"value": "veg",
+											"type": "text"
+										},
+										{
+											"key": "customizations",
+											"value": " [\n    {\n      \"title\": \"Extra Toppings\",\n      \"selection\": \"multiple\",\n      \"options\": [\n        {\n          \"name\": \"Mushrooms\",\n          \"detail\": \"Freshly sliced mushrooms\",\n          \"extraRate\": 100\n        },\n        {\n          \"name\": \"Olives\",\n          \"detail\": \"Black olives\",\n          \"extraRate\": 50\n        }\n      ]\n    },\n    {\n      \"title\": \"Sauce Choices\",\n      \"selection\": \"single\",\n      \"options\": [\n        {\n          \"name\": \"Marinara\",\n          \"detail\": \"Classic marinara sauce\",\n          \"extraRate\": 50\n        },\n        {\n          \"name\": \"BBQ Sauce\",\n          \"detail\": \"Tangy BBQ sauce\",\n          \"extraRate\": 50\n        }\n      ]\n    }\n  ]",
+											"type": "text"
+										},
+										{
+											"key": "categoryId",
+											"value": "676d82ecb6837308169c14ad",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/product/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"product",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllProduct",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/product/getAllItems",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"product",
+										"getAllItems"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetProduct",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/product/items/676d8309b6837308169c14b0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"product",
+										"items",
+										"676d8309b6837308169c14b0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateProduct",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "ingredients",
+											"value": "Wheat flour, cheese, tomatoes, green peppers",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/product/editItem/67670c7efaf47ce29a45b27b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"product",
+										"editItem",
+										"67670c7efaf47ce29a45b27b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteProduct",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/product/deleteItem/67699791f727ddb9e228d5d5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"product",
+										"deleteItem",
+										"67699791f727ddb9e228d5d5"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "QRCode",
+					"item": [
+						{
+							"name": "createQrCode",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"isTable\": true,\r\n  \"activeTab\": \"exampleTab\",\r\n  \"link\": \"https://chatgpt.com\",\r\n  \"qrName\": \"5\",\r\n  \"additionalText\": \"Scan me!\",\r\n  \"chooseColor\": \"#ffffff\",\r\n  \"frameColor\": \"#000000\",\r\n  \"qrColor\": \"#000000\",\r\n  \"contentCategory\": \"Food & Drink\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/qr-code/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"qr-code",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllQrCodes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/qr-code/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"qr-code",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateQrCode/:id",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"activeTab\": \"bvvvvvvsdgf\",\r\n  \"link\": \"https://chatgpt.com\",\r\n  \"qrName\": \"My QR Code\",\r\n  \"additionalText\": \"Scan me!\",\r\n  \"chooseColor\": \"#ffffff\",\r\n  \"frameColor\": \"#000000\",\r\n  \"qrColor\": \"#000000\",\r\n  \"contentCategory\": \"Food & Drink\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/qr-code/update/6764b23d4dd2e0ffdf970a4a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"qr-code",
+										"update",
+										"6764b23d4dd2e0ffdf970a4a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteQrCode/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/qr-code/delete/6764b23d4dd2e0ffdf970a4a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"qr-code",
+										"delete",
+										"6764b23d4dd2e0ffdf970a4a"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Resturants",
+					"item": [
+						{
+							"name": "createRestaurant",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MzFlZGRkODlhOTIyZTAyNWMwNDg5MiIsImlhdCI6MTczMTMyNjg4OCwiZXhwIjoxNzMxNDEzMjg4fQ.6uXwJz2QDOqADQPE6wd3TP7kgio5W3aAYTiftvFNwhY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"restaurantName\":\"ram\",\r\n    \"restaurantAddress\":\"b-472 socitey\",\r\n    \"country\":\"india\",\r\n    \"state\":\"gujarat\",\r\n    \"city\":\"surat\",\r\n    \"zipCode\":\"395010\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/restaurant/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"restaurant",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getRestaurant",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/restaurant/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"restaurant",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Notifications",
+					"item": [
+						{
+							"name": "getAll_Notifications",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/notifications/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"notifications",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ClearAll_Notifications",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/notifications/clear",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"notifications",
+										"clear"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "USER",
+			"item": [
+				{
+					"name": "Authenticate",
+					"item": [
+						{
+							"name": "User_Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Aryan Savaj2\",\r\n    \"phone\":\"21510789000\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/customer/userSignup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"customer",
+										"userSignup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get_User",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/customer/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"customer",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "getAllCategory",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/category/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"category",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "GetProduct",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/product/items/6769a5700d4d74cd72ca8912",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"product",
+										"items",
+										"6769a5700d4d74cd72ca8912"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PlaceOrder",
+					"item": [
+						{
+							"name": "createOrder",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"676eeb3a6b8eff8b8a79c6ac\",\r\n    \"items\": [\r\n        {\r\n            \"itemId\": \"677464a7fb8258b441fb87d9\",\r\n            \"quantity\": 10,\r\n            \"totalPrice\": 50,\r\n            \"customizations\": [\r\n                {\r\n                    \"title\": \"Extra Toppings\",\r\n                    \"option\": \"Mushrooms, Olives\",\r\n                    \"_id\": \"676b5ee0c645f14103c2a541\"\r\n                },\r\n                {\r\n                    \"title\": \"Sauce Choices\",\r\n                    \"option\": \"Marinara\",\r\n                    \"_id\": \"676b5ee0c645f14103c2a542\"\r\n                },\r\n                {\r\n                    \"title\": \"Spice Level\",\r\n                    \"option\": \"Regular Spicy\",\r\n                    \"_id\": \"676b5ee0c645f14103c2a543\"\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"cookingRequest\": \"Hello make it fast \",\r\n    \"orderType\": \"Parcel\"\r\n}\r\n\r\n// {\r\n//     \"userId\": \"676eeb3a6b8eff8b8a79c6ac\",\r\n//     \"items\": [\r\n//         {\r\n//             \"itemId\": \"676fba4e316c9d378c788992\",\r\n//             \"quantity\": 2,\r\n//             \"totalPrice\": 500,\r\n//             \"customizations\": [\r\n//                 {\r\n//                     \"title\": \"Extra Toppings\",\r\n//                     \"option\": \"Mushrooms, Olives\",\r\n//                     \"_id\": \"676b5ee0c645f14103c2a541\"\r\n//                 },\r\n//                 {\r\n//                     \"title\": \"Sauce Choices\",\r\n//                     \"option\": \"Marinara\",\r\n//                     \"_id\": \"676b5ee0c645f14103c2a542\"\r\n//                 },\r\n//                 {\r\n//                     \"title\": \"Spice Level\",\r\n//                     \"option\": \"Regular Spicy\",\r\n//                     \"_id\": \"676b5ee0c645f14103c2a543\"\r\n//                 }\r\n//             ]\r\n//         },\r\n//         {\r\n//             \"itemId\": \"676c3b8bf79d3af9ca3206a4\",\r\n//             \"quantity\": 3,\r\n//             \"totalPrice\": 500,\r\n//             \"customizations\": [\r\n//                 {\r\n//                     \"title\": \"Cheese Type\",\r\n//                     \"option\": \"Cheddar\",\r\n//                     \"_id\": \"676b5ee0c645f14103c2a544\"\r\n//                 },\r\n//                 {\r\n//                     \"title\": \"Bread Type\",\r\n//                     \"option\": \"Whole Wheat\",\r\n//                     \"_id\": \"676b5ee0c645f14103c2a545\"\r\n//                 }\r\n//             ]\r\n//         }\r\n//     ],\r\n//     \"cookingRequest\": \"Hello make it fast\",\r\n//     \"orderType\": \"Parcel\"\r\n// }\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/place-order/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"place-order",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getOrder",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/place-order/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"place-order",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getOrderById ",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/place-order/6772cb8c130800458bd41362",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"place-order",
+										"6772cb8c130800458bd41362"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getOrderByUserId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/place-order/orders/user/676eeb3a6b8eff8b8a79c6ac",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"place-order",
+										"orders",
+										"user",
+										"676eeb3a6b8eff8b8a79c6ac"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getUserOrderSummary ",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/place-order/orders/user/summary/676eeb3a6b8eff8b8a79c6ac",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"place-order",
+										"orders",
+										"user",
+										"summary",
+										"676eeb3a6b8eff8b8a79c6ac"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "initiate-payment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"userId\": \"676eeb3a6b8eff8b8a79c6ac\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/place-order/initiate-payment",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"place-order",
+										"initiate-payment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "payment-callback",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"676eeb3a6b8eff8b8a79c6ac\",\r\n    \"razorpayPaymentId\": \"order_PdxXnHopjRSlvX\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/place-order/payment-callback",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"place-order",
+										"payment-callback"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "cash-payment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": \"676eeb3a6b8eff8b8a79c6ac\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/place-order/cash-payment",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"place-order",
+										"cash-payment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletePlaceOrderByUserId",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/place-order/user/676eeb3a6b8eff8b8a79c6ac/order/67731bc3f73bcab06ffcd7ad",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"place-order",
+										"user",
+										"676eeb3a6b8eff8b8a79c6ac",
+										"order",
+										"67731bc3f73bcab06ffcd7ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "incrementItemQuantity",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/place-order/order/67746c8d4ee9c0cf38feeda3/item/677464a7fb8258b441fb87d9/increment",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"place-order",
+										"order",
+										"67746c8d4ee9c0cf38feeda3",
+										"item",
+										"677464a7fb8258b441fb87d9",
+										"increment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "decrementItemQuantity",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/place-order/order/67746c8d4ee9c0cf38feeda3/item/677464a7fb8258b441fb87d9/decrement",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"place-order",
+										"order",
+										"67746c8d4ee9c0cf38feeda3",
+										"item",
+										"677464a7fb8258b441fb87d9",
+										"decrement"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Add to cart",
+					"item": [
+						{
+							"name": "creat-order",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTQ1MjMyMDdkN2UzMzFhNTFjZmJjNiIsImlhdCI6MTczMzU3OTM1NSwiZXhwIjoxNzMzNjY1NzU1fQ.Taa1WO_isxhqhSxRupy44p-5awQFz2Z7QsE0EJuLXA0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"userId\": \"676eeb3a6b8eff8b8a79c6ac\",\r\n  \"items\": [\r\n    {\r\n      \"itemId\": \"676fba4e316c9d378c788992\",\r\n      \"quantity\": 2,\r\n      \"customizations\": [\r\n        {\r\n          \"title\": \"Extra Toppings\",\r\n          \"option\": \"Mushrooms, Olives\",\r\n          \"extraRate\": 150\r\n        },\r\n        {\r\n          \"title\": \"Sauce Choices\",\r\n          \"option\": \"Marinara\",\r\n          \"extraRate\": 50\r\n        },\r\n        {\r\n          \"title\": \"Spice Level\",\r\n          \"option\": \"Regular Spicy\",\r\n          \"extraRate\": 0\r\n        }\r\n      ],\r\n      \"totalExtraRate\": 200\r\n    }\r\n  ]\r\n}\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/add-to-cart-order/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"add-to-cart-order",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "orderid",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/add-to-cart-order/676af9a0e3b7498203eb88c2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"add-to-cart-order",
+										"676af9a0e3b7498203eb88c2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getRecentOrder",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/add-to-cart-order/recent/676af9a0e3b7498203eb88c2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"add-to-cart-order",
+										"recent",
+										"676af9a0e3b7498203eb88c2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/add-to-cart-order/delete/676a0ae1d73f084448cea197",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"add-to-cart-order",
+										"delete",
+										"676a0ae1d73f084448cea197"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "KITCHEN",
+			"item": [
+				{
+					"name": "pending-order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/kitchen/pending-order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"kitchen",
+								"pending-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "isProgressOrder",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/kitchen/accept-order/6772c8873e34c1db2d24413a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"kitchen",
+								"accept-order",
+								"6772c8873e34c1db2d24413a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getIsProgressOrders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/kitchen/is-progress-order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"kitchen",
+								"is-progress-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "isDeliveredOrder",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/kitchen/deliver-order/67704e0cb5ef4b061306070c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"kitchen",
+								"deliver-order",
+								"67704e0cb5ef4b061306070c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"value": "",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}
