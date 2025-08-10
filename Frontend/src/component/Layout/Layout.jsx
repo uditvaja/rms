@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import socket from "../../socket";
+import { io } from 'socket.io-client';
 import {
   MdDashboard,
   MdOutlineRestaurantMenu,
@@ -37,7 +37,7 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 import { GoDotFill } from "react-icons/go";
-import { getAdminById } from "@/api/ProfileApi";
+import { getAdminById } from "../api/ProfileApi";
 
 const Layout = () => {
   const [manageOrderOpen, setManageOrderOpen] = useState(false);
@@ -53,6 +53,7 @@ const Layout = () => {
   const [isDateModalOpen, setIsDateModalOpen] = useState(false);
   const [PaymentHistoryOpen, setPaymentHistoryOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const [socket, setSocket] = useState(null);
 
   const togglePaymentHistory = () => setPaymentHistoryOpen(!PaymentHistoryOpen);
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
@@ -207,11 +208,17 @@ const Layout = () => {
   };
 
   useEffect(() => {
+    // Initialize socket connection
+    const socketConnection = io('http://localhost:8080', {
+      withCredentials: true,
+    });
+    setSocket(socketConnection);
+
     // Fetch notifications when the component mounts
     fetchNotifications();
 
     // Listen for new notifications
-    socket.on("newNotification", (notification) => {
+    socketConnection.on("newNotification", (notification) => {
       setNotifications((prevNotifications) => [
         notification,
         ...prevNotifications,
@@ -220,7 +227,8 @@ const Layout = () => {
 
     // Clean up the socket listener when the component unmounts
     return () => {
-      socket.off("newNotification");
+      socketConnection.off("newNotification");
+      socketConnection.disconnect();
     };
   }, []);
 

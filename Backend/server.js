@@ -10,14 +10,15 @@ const http = require('http');
 const socketIO = require('socket.io');
 const cookieParser = require('cookie-parser');
 const { initSocket } = require('./socketUtil');
-app.use(cookieParser());
 
 dotenv.config();
+
+app.use(cookieParser());
 
 connectDB();
 
 app.use(cors({
-    origin: ['http://localhost:3030'],
+    origin: ['http://localhost:3030', 'http://localhost:5173'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     credentials: true
 }));
@@ -36,7 +37,7 @@ app.get('/',(req,res)=>{
 const server = http.createServer(app);
 const io = socketIO(server, {
     cors: {
-        origin: ['http://localhost:3030'],
+        origin: ['http://localhost:3030', 'http://localhost:5173'],
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
         credentials: true
     }

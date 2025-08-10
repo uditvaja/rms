@@ -52,7 +52,7 @@ export const getAdminData = async (token) => {
 // Existing functions...
 export const fetchCategories = async () => {
   try {
-    const response = await axiosInstance.get(endpoints.category.getCategories);
+    const response = await axiosInstance.get('/category/');
     return response.data;
   } catch (error) {
     throw error;
@@ -61,7 +61,7 @@ export const fetchCategories = async () => {
 
 export const addCategory = async (formData) => {
   try {
-    const response = await axiosInstance.post(endpoints.category.addCategory, formData, {
+    const response = await axiosInstance.post('/category/', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -74,7 +74,7 @@ export const addCategory = async (formData) => {
 
 export const fetchItems = async () => {
   try {
-    const response = await axiosInstance.get(endpoints.item.getItems);
+    const response = await axiosInstance.get('/product/getAllItems');
     return response.data;
   } catch (error) {
     throw error;
@@ -83,7 +83,7 @@ export const fetchItems = async () => {
 
 export const updateItem = async (itemId, updatedItem) => {
   try {
-    const response = await axiosInstance.put(`${endpoints.item.updateItem}/${itemId}`, updatedItem);
+    const response = await axiosInstance.put(`/product/editItem/${itemId}`, updatedItem);
     return response.data;
   } catch (error) {
     throw error;
@@ -92,7 +92,7 @@ export const updateItem = async (itemId, updatedItem) => {
 
 export const deleteItem = async (itemId) => {
   try {
-    const response = await axiosInstance.delete(`${endpoints.item.deleteItem}/${itemId}`);
+    const response = await axiosInstance.delete(`/product/deleteItem/${itemId}`);
     return response.data;
   } catch (error) {
     throw error;
@@ -101,7 +101,7 @@ export const deleteItem = async (itemId) => {
 
 export const cashPayment = async (userId ) => {
   try {
-    const response = await axiosInstance.post(endpoints.order.cashPayment, {
+    const response = await axiosInstance.post('/place-order/accept-cash-payment', {
       userId : userId , // Pass the orderId in the request body
     });
     console.log("Fetching Data:", response);
@@ -114,7 +114,7 @@ export const cashPayment = async (userId ) => {
 
 export const declineCashPayment = async (userId ) => {
   try {
-    const response = await axiosInstance.post(endpoints.order.declineCashPayment, {
+    const response = await axiosInstance.post('/place-order/decline-cash-payment', {
       userId : userId , // Pass the orderId in the request body
     });
     return response.data;
@@ -125,28 +125,19 @@ export const declineCashPayment = async (userId ) => {
 };
 
 export const fetchParcelPaymentHistory = async () => {
-  const token = localStorage.getItem("authToken");
-  const response = await fetch(
-    "http://localhost:8080/api/place-order/payment-history/parcel",
-    {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-  return response.json();
+  try {
+    const response = await axiosInstance.get('/place-order/payment-history/parcel');
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const fetchOnsitePaymentHistory = async () => {
-  const token = localStorage.getItem("authToken");
-  const response = await fetch("http://localhost:8080/api/place-order/payment-history/onsite",
-    {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-  return response.json();
+  try {
+    const response = await axiosInstance.get('/place-order/payment-history/onsite');
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };

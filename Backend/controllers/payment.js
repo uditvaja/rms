@@ -1,12 +1,15 @@
 const razorpay = require('../config/razorpay');
 const models = require("../models");
-const { io } = require('../server');
 const { createNotification, sendNotification } = require('./notification');
 const { getIO, getOnlineUsers , initSocket } = require('../socketUtil');
 
 const initiatePayment = async (req, res) => {
     try {
         const { userId } = req.body;
+        
+        if (!userId) {
+            return res.status(400).json({ success: false, message: "UserId is required" });
+        }
         
         const orders = await models.PlacedOrder.find({ userId, paymentMethod: { $ne: "Online" }, paymentStatus: { $ne: "completed" } });
         if (!orders || orders.length === 0) {
@@ -53,6 +56,10 @@ const initiatePayment = async (req, res) => {
 const handlePaymentCallback = async (req, res) => {
     try {
         const { userId, razorpayPaymentId } = req.body;
+        
+        if (!userId || !razorpayPaymentId) {
+            return res.status(400).json({ success: false, message: "UserId and razorpayPaymentId are required" });
+        }
 
         const orders = await models.PlacedOrder.find({ userId, paymentStatus: 'pending' });
         if (!orders || orders.length === 0) {

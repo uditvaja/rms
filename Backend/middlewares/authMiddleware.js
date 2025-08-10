@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const models = require('../models');
 
 // Middleware to verify admin access
 const adminAuthMiddleware = async (req, res, next) => {
@@ -25,7 +26,12 @@ const adminAuthMiddleware = async (req, res, next) => {
         }
 
         // Attach user info to request
-        req.user = decoded;
+        req.user = {
+            id: decoded.id,
+            email: decoded.email,
+            role: decoded.role,
+            userId: decoded.id
+        };
         next();
     } catch (error) {
         console.error("Error in admin authentication:", error);
@@ -49,7 +55,7 @@ const customerAuthMiddleware = async (req, res, next) => {
             });
         }
 
-        const decoded = jwt.verify(token, process.env.jwt_secret);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
         
         console.log("Decoded token:", decoded);
 
@@ -64,7 +70,8 @@ const customerAuthMiddleware = async (req, res, next) => {
         // Attach user info to request
         req.user = {
             id: decoded.userId, // Ensure userId is populated
-            role: decoded.role
+            role: decoded.role,
+            userId: decoded.userId
         };
         next();
     } catch (error) {
@@ -88,8 +95,13 @@ const middleware = async (req, res, next) => {
     }
   
     try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = decoded;
+      const decoded = jwt.verify(token, process.env.jwt_secret || process.env.JWT_SECRET);
+      req.user = {
+        id: decoded.id || decoded.userId,
+        email: decoded.email,
+        role: decoded.role,
+        userId: decoded.id || decoded.userId
+      };
       console.log(req.user, "------------------------------");
       next();
       

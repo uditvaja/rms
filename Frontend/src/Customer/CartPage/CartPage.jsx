@@ -290,7 +290,7 @@ const payableAmount = orderDetails ? orderDetails.grandTotal : 0; // Use grandTo
   };
 
   // Handle cash payment
-  const handleCashPayment = async () => {
+  const handleCashPaymentRequest = async () => {
     try {
       const userId = localStorage.getItem('userId'); // Get userId from localStorage
       await handleCashPayment(userId); // Use userId for payment
@@ -516,7 +516,7 @@ const payableAmount = orderDetails ? orderDetails.grandTotal : 0; // Use grandTo
               className="bg-[#C68A15] text-white py-2 w-full rounded-full text-sm font-medium"
               onClick={() => {
                 if (selectedPayment === 'Cash') {
-                  handleCashPayment();
+                  handleCashPaymentRequest();
                 } else if (selectedPayment === 'Online') {
                   handleRazorpayPayment();
                 }

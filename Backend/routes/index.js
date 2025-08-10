@@ -17,5 +17,14 @@ router.use('/place-order' , require('./placedOrder'));
 router.use('/kitchen', require('./kitchen'));
 router.use('/notifications', require('./notification'));
 
+// Health check endpoint
+router.get('/health', (req, res) => {
+  res.status(200).json({ 
+    success: true, 
+    message: 'Server is running',
+    timestamp: new Date().toISOString()
+  });
+});
+
 module.exports = router; 
 

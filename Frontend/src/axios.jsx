@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Kitchen from './Admin/Manageorder/Kitchen/Kitchen';
 
 // Define the base URL for your backend
 export const BASE_URL = 'http://localhost:8080/api/';
@@ -23,6 +22,23 @@ axiosInstance.interceptors.request.use(
     return config;
   },
   (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// Add a response interceptor to handle errors
+axiosInstance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    if (error.response?.status === 401) {
+      // Token expired or invalid
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('adminId');
+      localStorage.removeItem('userId');
+      window.location.href = '/login';
+    }
     return Promise.reject(error);
   }
 );
@@ -52,7 +68,8 @@ export const endpoints = {
   order: {
     getPlacedOrder: '/place-order/',
     acceptOrder: '/order/accept-order',
-    cashPayment: '/place-order/accept-cash-payment',
+    cashPayment: '/place-order/cash-payment',
+    acceptCashPayment: '/place-order/accept-cash-payment',
     declineCashPayment: '/place-order/decline-cash-payment',
     initiatePayment: '/place-order/initiate-payment', 
     paymentCallback: '/place-order/payment-callback',
